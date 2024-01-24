@@ -1,0 +1,25 @@
+universe = vanilla
+
+executable = /afs/cern.ch/user/m/matheus/CMSSW_10_6_22/src/MG5_aMC_v2_9_16/submit_mg5_condor.sh
+
+output = output/job.out
+error  = output/job.err
+log    = output/job.log
+
+getenv     = True
+
+#environment = "X509_USER_PROXY=/afs/cern.ch/user/m/matheus/x509up_u130329"
+
+requirements = (OpSysAndVer =?= "CentOS7")
+
+#RequestCpus = 8
+#request_memory = 32000
+
++JobFlavour = "nextweek"
+
+transfer_input_files=/afs/cern.ch/user/m/matheus/CMSSW_10_6_22/src/MG5_aMC_v2_9_16/submit_mg5_condor.sh , /afs/cern.ch/user/m/matheus/CMSSW_10_6_22/src/MG5_aMC_v2_9_16/Events_Generate_Mono_MG5.py
+
+should_transfer_files = IF_NEEDED
+when_to_transfer_output = ON_EXIT
+
+queue
