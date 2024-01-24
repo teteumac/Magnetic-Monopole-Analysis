@@ -1,99 +1,103 @@
-# Monopole-Script
-These files are in lxplus.  
-CMS release version : CMSSW_10_6_23   
-Set up enviroment before running the script  
-```
-cmsrel CMSSW_10_6_23  
-cd CMSSW_10_6_23/src  
-git clone git@github.com:sun51027/Monopole-Script.git  
-mv Monopole-Script/* . 
-rm -rf SimGeneral 
-scram b -j 4
-``` 
-Note: If you just want to generate Ntuple rather than study systematic uncertainty, you have to remove "SimGeneral". If you want to study systematic uncertainty, please see Systematic Uncertainty part.
-## Monopole Analysis
-**To generate ntuple locally:**  
- `scarm b `  
- `cmsRun ntuple_mc_YEAR_cfg.py inputFiles=file:input.root maxEvents=-1 outputFile=output.root `  
+# Generation and Simulation
 
-Note: I recommend not to do this first, since all files in this repository were defaulted to be used for "Condor", see below topic. If you just want to run one file for test, you have to cancel the comments in these lines:
-```c
-process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(options.maxEvents)
-)
-Output = cms.string(options.outputFile)
-```
-**To submit jobs onto Condor:**  
+## Instructions for Generating Events with MadGraph
 
-Please try to understand how submit.sh and tmpSUB.SUB work with relation to ntuple_mc_YEAR_cfg.py (the default year is 2018, mass 1000GeV), and change your own AFS (real)path in the *submit.sh* and *tmpSUB.SUB* before you submit jobs. For example,  
+First, you must configure the environment. Inside the repository you can see the executable `environment_config_mg5.sh`.
+Edit this script fallowing the steps:
+* Choice the CMSSW release in the line 4 and modified the line 7 too.
+* The line 33 and 36, change the path to you path until `$YOUPATH/src/MG5_aMC_v2_9_16/HEPTools/lhapdf6_py3/share/LHAPDF`
+* Run this code with `./environment_config_mg5.sh`
+* Open the new terminal
+* Enter inside the CMSSW release that you create, for exemple `cd CMSSW_10_6_22/src/MG5_aMC_v2_9_16`
+* Run this command to have acess the python 3.8 `source /afs/cern.ch/user/m/matheus/public/hepenv_setup.sh`
+   
+Now you may be able to run the code for generating the events.
+The `Generation_Monopolo_MG5.py` file is responsible for the entire generation process. On lines 39 and 40 you should change the paths to the absolute path of the madgraph(`MADGRAPH_PATH_RUN`) and the output in your `eos` where the generation will be saved (`OUTPUT_DIR`).
 
-/afs/cern.ch/user/l/lshih/CMSSW_10_6_23/src -> /afs/cern.ch/user/m/maisway/CMSSW_10_6_23/src  
-(There are 8 address need to be changed in these two codes)
+    
+     MADGRAPH_PATH_RUN = '/afs/cern.ch/user/m/matheus/CMSSW_10_6_24/src/MG5_aMC_v2_9_15/bin/mg5_aMC'
+     OUTPUT_DIR = '/eos/home-m/matheus/magnetic_monopole_output'
 
-You also have to create new folder for condor Output, Error, Log messages from condor job.
-```
-mkdir condor
-cd condor
-mkdir output errors stdout
-cd -
-```
- 
-Load the RECO files in Phat's eos space(current path):  
-/eos/cms/store/user/srimanob/monopole/13TeV/Legacy-RECO-v2/  
-Note:Skip this step when you run this script first time, since "remoteFileList.txt" in this package has 2018 1000GeV RECO files by default.  
-`realpath /eos/cms/store/user/srimanob/monopole/13TeV/Legacy-RECO-v2/YEAR-MASS/* >> remoteFileList.txt`
+The shell code `submit_mg5_condor.sh` is the executable that will be allocated to the condor (`condor_sub_mg5.sub`)
 
-Add "file:" in front of all lines (*see remoteFileList.txt for example*)  
-Note that there are some DeltaRayOff sample in 2018-1000,2000,3000,4000 and 2016-1000,2000. Please remote DeltaRayOff samples in remoteFileList.txt before you submit jobs.
+If you want to generate local code, just run it locally using
 
-Submit jobs:
+   
+    python3 Generation_Monopolo_MG5.py -mass 1000 -events 100 -itera 10 -process photon_fusion -spin half
 
-`condor_submit tmpSUB.SUB`  
-
-Check the status of your jobs:
-
-`condor_q`  
-
-## Systematic Uncertainty
-
-Load particular packages from CMSSW_RELEASE_BASE and compile:
-
-`cp $CMSSW_RELEASE_BASE/src/{RecoParticleFlow,Configuration,SimGeneral} ~/CMSSW_10_6_23/src`
-
-`scram b -j 4`
-
-As long as structure in your workspace  is the same as the CMSSW_BASE, it will run the your local files first when `cmsRun`.
-Note that I have modified SiStripSimParameters_cfi.py in SimGeneral, you can just copy my SiStripSimParameters_cfi.py to use. 
-The usage see below:
-
-**To modify the Dedx crosstalk effect with 10% (for X0 or X1 or X2):**
-
-`vim SimGeneral/MixingModule/python/SiStripSimParameters_cfi.py`
-
-We only choose to change X0 up and down with 10% for systematic study, so you only need to comment the default numbers and open the X0(up or down).
+    -mass 1000 --> Monopole mass
+    -events 100 --> How many events do you want to generate
+    -itera 10 --> Number of times you want to generate the same code
+    -process photon_fusion --> Which process do you want to run: Drell Yan or Photon Fusion
+    -spin half --> Which spin do you want: Spin 0 or Spin 1/2
 
 
-**To switch OFF the spike algorithm (for Ecal sysematic uncertainty):**
+*OBSERVATION:* Remember to change all code directories to yours.
 
-`vim RecoParticleFlow/PFClusterProducer/python/particleFlowRecHitECAL_cfi.py`
+For this analysis we are using recent results obtained by ATLAS on the lower limits of the monopole mass:
+                
+<table>
+    <tr>
+        <th>Process and Spin</th>
+        <th>|g| = 1gD</th>
+        <th>|g| = 2gD</th>
+        <th>|z| = 20</th>
+        <th>|z| = 40</th>
+        <th>|z| = 60</th>
+        <th>|z| = 80</th>
+        <th>|z| = 100</th>
+    </tr>
+    <tr>
+        <td>DY spin-0</td>
+        <td>2.1</td>
+        <td>2.1</td>
+        <td>1.4</td>
+        <td>1.8</td>
+        <td>1.9</td>
+        <td>1.8</td>
+        <td>1.7</td>
+    </tr>
+    <tr>
+        <td>DY spin-1/2</td>
+        <td>2.6</td>
+        <td>2.5</td>
+        <td>1.8</td>
+        <td>2.2</td>
+        <td>2.2</td>
+        <td>2.1</td>
+        <td>1.9</td>
+    </tr>
+    <tr>
+        <td>PF spin-0</td>
+        <td>3.4</td>
+        <td>3.5</td>
+        <td>2.1</td>
+        <td>2.8</td>
+        <td>2.9</td>
+        <td>2.8</td>
+        <td>2.5</td>
+    </tr>
+    <tr>
+        <td>PF spin-1/2</td>
+        <td>3.6</td>
+        <td>3.7</td>
+        <td>2.5</td>
+        <td>3.1</td>
+        <td>3.1</td>
+        <td>3.0</td>
+        <td>2.5</td>
+    </tr>
+    <tr>
+        <td colspan="8"><a href="https://arxiv.org/pdf/2308.04835.pdf">Source: Search for magnetic monopoles and stable particles
+with high electric charges in √𝒔 =13 TeV 𝒑 𝒑 collisions with the ATLAS detector. Table 2, pag 13</a></td>
+    </tr>
+</table>
 
-switch True to False for these lines:
-      timingCleaning = cms.bool(True),
-      topologicalCleaning = cms.bool(True),
+This table shows the first two columns with the value of the monopole's magnetic charge and the last are the HECOs particles charge.
+
+When the condor over, you must have 2000 files. You can count how files you have with these command 
+      
+      find /eos/home-m/matheus/magnetic_monopole_output -maxdepth 1 -type f | wc -l
 
 
-Useful condor tutorial:  
-https://batchdocs.web.cern.ch/local/quick.html  
-
-## Run on Data
-
-Just to test if cmsRun can be successful in local.
-
-Download  ntuple_mc_2018_forData_cfg.py and latest MonoNtupleDumper.cc first.
-
-```
-scram b -j 4 
-xrdcp root://cmsxrootd.fnal.gov//store/data/Run2018A/EGamma/USER/EXOMONOPOLE-12Nov2019_UL2018-v2/270007/7F10EF9D-BDF9-074B-8216-834602DE11C3.root .
-cmsRun ntuple_mc_2018_forData_cfg.py inputFiles=file:7F10EF9D-BDF9-074B-8216-834602DE11C3.root
-````
-Still finding the problem with CRAB....
+## Simulations Steps 
