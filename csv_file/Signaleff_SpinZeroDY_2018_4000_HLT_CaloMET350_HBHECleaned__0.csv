@@ -1,0 +1,16 @@
+4000 HLT_CaloMET350_HBHECleaned,CutFlow,
+Generated ev,19500
+        TRG, 1548
+QualityCuts, 1406
+       ECut, 808
+     F51Cut, 481
+ dEdXSigCut, 461
+Signal efficiency, 0.023641
+
+,N1Cuts,Relative eff
+     No TRG, 0,inf
+ No Quality, 610,0.755738
+    No ECut, 788,0.585025
+  No F51Cut, 702,0.656695
+ No dEdXSig, 592,0.778716
+

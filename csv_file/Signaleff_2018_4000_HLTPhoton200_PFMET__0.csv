@@ -1,0 +1,16 @@
+4000 HLT_Photon200_PFMET,CutFlow,
+Generated ev,100000
+        TRG, 2243
+QualityCuts, 2155
+       ECut, 2041
+     F51Cut, 1151
+ dEdXSigCut, 1131
+Signal efficiency, 0.01131
+
+,N1Cuts,Relative eff
+     No TRG, 21891,0.0516651
+ No Quality, 1608,0.703358
+    No ECut, 1529,0.739699
+  No F51Cut, 2012,0.562127
+ No dEdXSig, 1504,0.751995
+

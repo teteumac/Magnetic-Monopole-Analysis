@@ -1,0 +1,16 @@
+4200 Photon175,CutFlow,
+Generated ev,100000
+        TRG, 4400
+QualityCuts, 4130
+       ECut, 3627
+     F51Cut, 2116
+ dEdXSigCut, 2016
+Signal efficiency, 0.02016
+
+,N1Cuts,Relative eff
+     No TRG, 0,inf
+ No Quality, 2834,0.711362
+    No ECut, 2851,0.70712
+  No F51Cut, 3475,0.580144
+ No dEdXSig, 2710,0.743911
+

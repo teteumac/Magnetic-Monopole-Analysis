@@ -1,0 +1,16 @@
+3800 NoTRG_HLT_Photon200,CutFlow,
+Generated ev,100000
+        TRG, 3522
+QualityCuts, 3384
+       ECut, 3150
+     F51Cut, 1898
+ dEdXSigCut, 1857
+Signal efficiency, 0.01857
+
+,N1Cuts,Relative eff
+     No TRG, 27158,0.0683776
+ No Quality, 2477,0.749697
+    No ECut, 2416,0.768626
+  No F51Cut, 3084,0.60214
+ No dEdXSig, 2328,0.79768
+

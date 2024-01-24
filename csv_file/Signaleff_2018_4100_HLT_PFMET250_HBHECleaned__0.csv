@@ -1,0 +1,16 @@
+4100 HLT_PFMET250_HBHECleaned,CutFlow,
+Generated ev,100000
+        TRG, 3059
+QualityCuts, 2888
+       ECut, 2677
+     F51Cut, 1349
+ dEdXSigCut, 1323
+Signal efficiency, 0.01323
+
+,N1Cuts,Relative eff
+     No TRG, 0,inf
+ No Quality, 2082,0.635447
+    No ECut, 1921,0.688704
+  No F51Cut, 2632,0.50266
+ No dEdXSig, 1844,0.717462
+

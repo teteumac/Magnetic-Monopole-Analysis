@@ -1,0 +1,16 @@
+3700 NoTrg_Pho200,CutFlow,
+Generated ev,100000
+        TRG, 5234
+QualityCuts, 4957
+       ECut, 4643
+     F51Cut, 2555
+ dEdXSigCut, 2495
+Signal efficiency, 0.02495
+
+,N1Cuts,Relative eff
+     No TRG, 30405,0.0820589
+ No Quality, 3709,0.672688
+    No ECut, 3516,0.709613
+  No F51Cut, 4541,0.549438
+ No dEdXSig, 3454,0.722351
+

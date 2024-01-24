@@ -1,0 +1,30 @@
+universe = vanilla
+
+executable = /afs/cern.ch/user/m/matheus/CMSSW_10_6_23/src/simulation_Run2.sh
+
+output = output/$(ClusterId)_$(ProcId).out
+error  = output/$(ClusterId)_$(ProcId).err
+log    = output/$(ClusterId)_$(ProcId).log
+
+getenv     = True
+
+#environment = "X509_USER_PROXY=/afs/cern.ch/user/m/matheus/x509up_u130329"
+environment = "X509_USER_PROXY=$ENV(HOME)/x509up_u130329"
+
+requirements = (OpSysAndVer =?= "CentOS7")
+
+#request_memory = 32000
+
++JobFlavour = "nextweek"
+
+getenv     = True
+
+#request_cpus = 8
+
+transfer_input_files=/afs/cern.ch/user/m/matheus/CMSSW_10_6_23/src/simulation_Run2.sh
+should_transfer_files = IF_NEEDED
+when_to_transfer_output = ON_EXIT
+
+#queue arguments from /afs/cern.ch/user/m/matheus/CMSSW_10_6_23/src/failed_jobs.txt
+queue arguments from /afs/cern.ch/user/m/matheus/CMSSW_10_6_23/src/ListFile_condor.txt
+

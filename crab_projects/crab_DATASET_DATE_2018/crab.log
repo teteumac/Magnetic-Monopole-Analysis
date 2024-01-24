@@ -1,0 +1,147 @@
+DEBUG 2023-12-01 13:09:24.415 UTC: 	 CRAB Client version: v3.231010
+DEBUG 2023-12-01 13:09:24.415 UTC: 	 Running on: Linux lxplus768.cern.ch 3.10.0-1160.102.1.el7.x86_64 #1 SMP Tue Oct 17 15:42:21 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux - CentOS Linux 7 (Core)
+DEBUG 2023-12-01 13:09:24.415 UTC: 	 Executing command: 'submit'
+DEBUG 2023-12-01 13:09:24.416 UTC: 	 Found CRAB cache file /afs/cern.ch/user/m/matheus/.crab3
+INFO 2023-12-01 13:09:24.490 UTC: 	 Will use CRAB configuration file crab_config_data_2018.py
+DEBUG 2023-12-01 13:09:24.490 UTC: 	 Loading CRAB configuration file.
+DEBUG 2023-12-01 13:09:24.512 UTC: 	 Will use CRAB Analysis plugin (i.e. will run an analysis job type).
+DEBUG 2023-12-01 13:09:24.576 UTC: 	 Checking credentials
+DEBUG 2023-12-01 13:09:24.576 UTC: 	 Proxy file /tmp/x509up_u130329 not found
+DEBUG 2023-12-01 13:09:24.576 UTC: 	 Creating new proxy for 172:00 hours
+DEBUG 2023-12-01 13:09:24.576 UTC: 	 Executing command :
+ voms-proxy-init --rfc --cert ~/.globus/usercert.pem --key ~/.globus/userkey.pem --out /tmp/x509up_u130329 --valid 192:00 --voms cms:/cms
+DEBUG 2023-12-01 13:09:30.278 UTC: 	 output : 
+ error: 
+ retcode : 0
+DEBUG 2023-12-01 13:09:30.278 UTC: 	 Executing command :
+ voms-proxy-info --actimeleft --timeleft --file /tmp/x509up_u130329
+DEBUG 2023-12-01 13:09:30.715 UTC: 	 output : 691198
+691198
+
+ error: 
+ retcode : 0
+DEBUG 2023-12-01 13:09:30.715 UTC: 	 Proxy created.
+DEBUG 2023-12-01 13:09:30.746 UTC: 	 Encoded data for curl request: subresource=delegatedn
+DEBUG 2023-12-01 13:09:30.795 UTC: 	 Registering user credentials on myproxy for /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod|dev)-tw(01|02|03).cern.ch|/DC=ch/DC=cern/OU=computers/CN=stefanov(m|m2).cern.ch|/DC=ch/DC=cern/OU=computers/CN=dciangot-tw.cern.ch
+DEBUG 2023-12-01 13:09:30.795 UTC: 	 Executing command :
+ voms-proxy-info --identity --file /tmp/x509up_u130329
+DEBUG 2023-12-01 13:09:31.222 UTC: 	 output : /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=matheus/CN=844120/CN=Matheus Pereira Macedo De Sousa
+
+ error: 
+ retcode : 0
+DEBUG 2023-12-01 13:09:31.222 UTC: 	 Getting myproxy life time left for b3a926167d6189b33a0e1f814937b992ac6cb718
+DEBUG 2023-12-01 13:09:31.222 UTC: 	 Executing command :
+ myproxy-info -s myproxy.cern.ch -l b3a926167d6189b33a0e1f814937b992ac6cb718
+DEBUG 2023-12-01 13:09:31.562 UTC: 	 output : username: b3a926167d6189b33a0e1f814937b992ac6cb718
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=matheus/CN=844120/CN=Matheus Pereira Macedo De Sousa
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod|dev)-tw(02|01).cern.ch|/DC=ch/DC=cern/OU=computers/CN=(ddi|ddidk|mytw).cern.ch|/DC=ch/DC=cern/OU=computers/CN=stefanov(m|m2).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod|dev)-tw(02|01).cern.ch|/DC=ch/DC=cern/OU=computers/CN=(ddi|ddidk|mytw).cern.ch|/DC=ch/DC=cern/OU=computers/CN=stefanov(m|m2).cern.ch
+  timeleft: 0:00:00
+
+ error: 
+ retcode : 0
+DEBUG 2023-12-01 13:09:31.562 UTC: 	 Myproxy is valid: 0
+DEBUG 2023-12-01 13:09:31.562 UTC: 	 Executing command :
+ openssl x509 -noout -dates -in ~/.globus/usercert.pem
+DEBUG 2023-12-01 13:09:31.580 UTC: 	 output : notBefore=Mar 13 18:19:43 2023 GMT
+notAfter=Apr 16 18:19:43 2024 GMT
+
+ error: 
+ retcode : 0
+DEBUG 2023-12-01 13:09:31.584 UTC: 	 Delegating a myproxy for 720:00 hours
+DEBUG 2023-12-01 13:09:31.584 UTC: 	 Executing command :
+ export GT_PROXY_MODE=rfc ; myproxy-init -d -n -s myproxy.cern.ch -C ~/.globus/usercert.pem -y ~/.globus/userkey.pem -x -R '/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod|dev)-tw(01|02|03).cern.ch|/DC=ch/DC=cern/OU=computers/CN=stefanov(m|m2).cern.ch|/DC=ch/DC=cern/OU=computers/CN=dciangot-tw.cern.ch' -x -Z '/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod|dev)-tw(01|02|03).cern.ch|/DC=ch/DC=cern/OU=computers/CN=stefanov(m|m2).cern.ch|/DC=ch/DC=cern/OU=computers/CN=dciangot-tw.cern.ch' -l b3a926167d6189b33a0e1f814937b992ac6cb718 -t 168 -c 720:00
+DEBUG 2023-12-01 13:09:35.951 UTC: 	 output : Your identity: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=matheus/CN=844120/CN=Matheus Pereira Macedo De Sousa
+Creating proxy ................................. Done
+Proxy Verify OK
+Your proxy is valid until: Sun Dec 31 14:09:35 2023
+A proxy valid for 720 hours (30.0 days) for user b3a926167d6189b33a0e1f814937b992ac6cb718 now exists on myproxy.cern.ch.
+
+ error: 
+ retcode : 0
+DEBUG 2023-12-01 13:09:35.951 UTC: 	 Executing command :
+ myproxy-info -s myproxy.cern.ch -l b3a926167d6189b33a0e1f814937b992ac6cb718
+DEBUG 2023-12-01 13:09:36.235 UTC: 	 output : username: b3a926167d6189b33a0e1f814937b992ac6cb718
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=matheus/CN=844120/CN=Matheus Pereira Macedo De Sousa
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod|dev)-tw(01|02|03).cern.ch|/DC=ch/DC=cern/OU=computers/CN=stefanov(m|m2).cern.ch|/DC=ch/DC=cern/OU=computers/CN=dciangot-tw.cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod|dev)-tw(01|02|03).cern.ch|/DC=ch/DC=cern/OU=computers/CN=stefanov(m|m2).cern.ch|/DC=ch/DC=cern/OU=computers/CN=dciangot-tw.cern.ch
+  timeleft: 719:59:59  (30.0 days)
+
+ error: 
+ retcode : 0
+DEBUG 2023-12-01 13:09:36.236 UTC: 	 My-proxy delegated.
+DEBUG 2023-12-01 13:09:36.236 UTC: 	 Result of myproxy credential check:
+  Credential exists on myproxy: username: b3a926167d6189b33a0e1f814937b992ac6cb718  - validity: 29 days, 23:59:00
+DEBUG 2023-12-01 13:09:36.236 UTC: 	 Command use: submit
+DEBUG 2023-12-01 13:09:36.236 UTC: 	 Options use: ['-c', 'crab_config_data_2018.py']
+DEBUG 2023-12-01 13:09:36.236 UTC: 	 Encoded data for curl request: subresource=version
+DEBUG 2023-12-01 13:09:36.285 UTC: 	 CRABClient version: v3.231010
+DEBUG 2023-12-01 13:09:36.285 UTC: 	 Instance is prod
+DEBUG 2023-12-01 13:09:36.285 UTC: 	 Server base url is cmsweb.cern.ch
+DEBUG 2023-12-01 13:09:36.285 UTC: 	 Command api workflow
+DEBUG 2023-12-01 13:09:36.285 UTC: 	 Started submission
+DEBUG 2023-12-01 13:09:36.285 UTC: 	 Working on /afs/cern.ch/user/m/matheus/CMSSW_10_6_24/src/crab_projects/crab_DATASET_DATE_2018
+DEBUG 2023-12-01 13:09:36.285 UTC: 	 Encoded data for curl request: subresource=backendurls
+DEBUG 2023-12-01 13:09:36.566 UTC: 	 Loading required information from the environment
+DEBUG 2023-12-01 13:09:36.566 UTC: 	 Found CMSSW_10_6_24 for slc7_amd64_gcc700 with base /afs/cern.ch/user/m/matheus/CMSSW_10_6_24
+DEBUG 2023-12-01 13:09:36.566 UTC: 	 Loading required information from the environment
+DEBUG 2023-12-01 13:09:36.566 UTC: 	 Found CMSSW_10_6_24 for slc7_amd64_gcc700 with base /afs/cern.ch/user/m/matheus/CMSSW_10_6_24
+DEBUG 2023-12-01 13:09:36.566 UTC: 	 UNIQUE NAME: tarUUID 567d45fc-7549-4c55-8ca2-289993ac62bf 
+DEBUG 2023-12-01 13:09:36.566 UTC: 	 self.config: from WMCore.Configuration import Configuration
+config = Configuration()
+config.section_('General')
+config.General.transferLogs = True
+config.General.transferOutputs = True
+config.General.workArea = 'crab_projects'
+config.General.requestName = 'DATASET_DATE_2018'
+config.section_('JobType')
+config.JobType.psetName = 'ntuple_mc_2018_forData_cfg.py'
+config.JobType.pluginName = 'Analysis'
+config.JobType.numCores = 1
+config.JobType.maxMemoryMB = 2500
+config.section_('Data')
+config.Data.totalUnits = -1
+config.Data.unitsPerJob = 1
+config.Data.userInputFiles = ['root://cmsxrootd.fnal.gov//store/data/Run2018A/EGamma/USER/EXOMONOPOLE-12Nov2019_UL2018-v2/270007/7F10EF9D-BDF9-074B-8216-834602DE11C3.root']
+config.Data.inputDBS = 'global'
+config.Data.splitting = 'FileBased'
+config.Data.outLFNDirBase = 'gsiftp://eosuserftp.cern.ch/eos/user/m/matheus/magnetic_monopole_Data2018'
+config.Data.publication = False
+config.section_('Site')
+config.Site.storageSite = 'T3_CH_CERNBOX'
+config.section_('User')
+config.section_('Debug')
+
+DEBUG 2023-12-01 13:09:36.566 UTC: 	 self.config.JobType.psetName: ntuple_mc_2018_forData_cfg.py
+INFO 2023-12-01 13:09:36.566 UTC: 	 Importing CMSSW configuration ntuple_mc_2018_forData_cfg.py
+INFO 2023-12-01 13:10:27.689 UTC: 	 Finished importing CMSSW configuration ntuple_mc_2018_forData_cfg.py
+DEBUG 2023-12-01 13:10:27.690 UTC: 	 Writing CMSSW configuration to /afs/cern.ch/user/m/matheus/CMSSW_10_6_24/src/crab_projects/crab_DATASET_DATE_2018/inputs/PSet.py
+DEBUG 2023-12-01 13:10:30.654 UTC: 	 The following EDM output files will be collected: []
+DEBUG 2023-12-01 13:10:30.654 UTC: 	 The following TFile output files will be collected: []
+DEBUG 2023-12-01 13:10:30.654 UTC: 	 The following user output files (not listed as PoolOuputModule or TFileService in the CMSSW PSet) will be collected: 
+WARNING 2023-12-01 13:10:30.654 UTC: 	 Warning: CRAB could not detect any output file in the CMSSW configuration nor was any explicitly specified in the CRAB configuration. Hence CRAB will not collect any output file from this task.
+DEBUG 2023-12-01 13:10:30.654 UTC: 	 Loading required information from the environment
+DEBUG 2023-12-01 13:10:30.654 UTC: 	 Found CMSSW_10_6_24 for slc7_amd64_gcc700 with base /afs/cern.ch/user/m/matheus/CMSSW_10_6_24
+DEBUG 2023-12-01 13:10:30.654 UTC: 	 Making tarball in /afs/cern.ch/user/m/matheus/CMSSW_10_6_24/src/crab_projects/crab_DATASET_DATE_2018/inputs/567d45fc-7549-4c55-8ca2-289993ac62bfdefault.tgz
+DEBUG 2023-12-01 13:10:30.660 UTC: 	 Checking directory /afs/cern.ch/user/m/matheus/CMSSW_10_6_24/bin
+DEBUG 2023-12-01 13:10:30.660 UTC: 	 Adding directory /afs/cern.ch/user/m/matheus/CMSSW_10_6_24/bin to tarball
+DEBUG 2023-12-01 13:10:30.763 UTC: 	 Checking directory /afs/cern.ch/user/m/matheus/CMSSW_10_6_24/python
+DEBUG 2023-12-01 13:10:30.763 UTC: 	 Adding directory /afs/cern.ch/user/m/matheus/CMSSW_10_6_24/python to tarball
+ERROR 2023-12-01 13:10:30.790 UTC: 	 Error: Infinite directory loop found in: /afs/cern.ch/user/m/matheus/CMSSW_10_6_24/python 
+Stderr: [Errno 2] No such file or directory: '/afs/cern.ch/user/m/matheus/CMSSW_10_6_24/python/SimGeneral/MixingModule'
+ERROR 2023-12-01 13:10:30.790 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.231010.00/bin/crab.py", line 159, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.231010.00/bin/crab.py", line 146, in __call__
+    self.cmd()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.231010.00/lib/CRABClient/Commands/submit.py", line 107, in __call__
+    dummy_inputfiles, jobconfig = plugjobtype.run(filecacheurl)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.231010.00/lib/CRABClient/JobType/Analysis.py", line 160, in run
+    tb.addFiles(userFiles=inputFiles, cfgOutputName=cfgOutputName)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.231010.00/lib/CRABClient/JobType/UserTarball.py", line 142, in addFiles
+    self.checkdirectory(fullPath)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.231010.00/lib/CRABClient/JobType/UserTarball.py", line 323, in checkdirectory
+    raise EnvironmentException(err)
+EnvironmentException: [91mError[0m: Infinite directory loop found in: /afs/cern.ch/user/m/matheus/CMSSW_10_6_24/python 
+Stderr: [Errno 2] No such file or directory: '/afs/cern.ch/user/m/matheus/CMSSW_10_6_24/python/SimGeneral/MixingModule'

@@ -1,0 +1,16 @@
+4000 HLT_Photon200_CaloMET,CutFlow,
+Generated ev,19500
+        TRG, 437
+QualityCuts, 422
+       ECut, 379
+     F51Cut, 198
+ dEdXSigCut, 196
+Signal efficiency, 0.0100513
+
+,N1Cuts,Relative eff
+     No TRG, 5409,0.0362359
+ No Quality, 293,0.668942
+    No ECut, 293,0.668942
+  No F51Cut, 360,0.544444
+ No dEdXSig, 271,0.723247
+

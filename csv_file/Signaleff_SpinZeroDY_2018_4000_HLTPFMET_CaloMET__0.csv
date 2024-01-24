@@ -1,0 +1,16 @@
+4000 HLT_PFMET_CaloMET,CutFlow,
+Generated ev,19500
+        TRG, 1547
+QualityCuts, 1405
+       ECut, 807
+     F51Cut, 480
+ dEdXSigCut, 460
+Signal efficiency, 0.0235897
+
+,N1Cuts,Relative eff
+     No TRG, 5409,0.0850434
+ No Quality, 609,0.755337
+    No ECut, 787,0.584498
+  No F51Cut, 701,0.656205
+ No dEdXSig, 591,0.778342
+
