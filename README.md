@@ -12,7 +12,7 @@ Edit this script fallowing the steps:
 * Run this command to have acess the python 3.8 `source /afs/cern.ch/user/m/matheus/public/hepenv_setup.sh`
    
 Now you may be able to run the code for generating the events.
-The `Generation_Monopolo_MG5.py` file is responsible for the entire generation process. On lines 39 and 40 you should change the paths to the absolute path of the madgraph(`MADGRAPH_PATH_RUN`) and the output in your `eos` where the generation will be saved (`OUTPUT_DIR`).
+The `Events_Generate_Mono_MG5.py` file is responsible for the entire generation process. On lines 39 and 40 you should change the paths to the absolute path of the madgraph(`MADGRAPH_PATH_RUN`) and the output in your `eos` where the generation will be saved (`OUTPUT_DIR`).
 
     
      MADGRAPH_PATH_RUN = '/afs/cern.ch/user/m/matheus/CMSSW_10_6_24/src/MG5_aMC_v2_9_15/bin/mg5_aMC'
@@ -23,14 +23,14 @@ The shell code `submit_mg5_condor.sh` is the executable that will be allocated t
 If you want to generate local code, just run it locally using
 
    
-    python3 Generation_Monopolo_MG5.py -mass 1000 -events 100 -itera 10 -process photon_fusion -spin half
+    python3 Events_Generate_Mono_MG5.py -mass 1000 -events 500 -process "photon_fusion" -spin "zero" -seed_rnd 1
 
     -mass 1000 --> Monopole mass
-    -events 100 --> How many events do you want to generate
+    -events 500 --> How many events do you want to generate
     -itera 10 --> Number of times you want to generate the same code
     -process photon_fusion --> Which process do you want to run: Drell Yan or Photon Fusion
     -spin half --> Which spin do you want: Spin 0 or Spin 1/2
-
+    -seed_rnd --> Random seed used to generate different samples
 
 *OBSERVATION:* Remember to change all code directories to yours.
 
@@ -101,3 +101,28 @@ When the condor over, you must have 2000 files. You can count how files you have
 
 
 ## Simulations Steps 
+
+### Simulation Stage for Run II
+
+For the simulation stage, the entire process was divided to be carried out over the 3 years of Run II. However, it is necessary to publish 5 releases to acquire the AOD files for 3 years.
+
+#### Releases Required
+
+You will need the following CMSSW releases:
+
+- `CMSSW_10_2_16_UL`
+- `CMSSW_10_6_22`
+- `CMSSW_10_6_23`
+- `CMSSW_8_0_33_UL`
+- `CMSSW_9_4_14_UL`
+- `CMSSW_9_4_14_UL_patch1`
+
+#### Automation with HTCondor
+
+Only the `CMSSW_10_6_23` release makes the entire process automated by HTCondor.
+
+#### Customizing the Simulation
+
+Within `CMSSW_10_6_23/src`, you can find the code `simulation_Run2.sh` and modify the relevant paths, as well as the year of execution which is on line 20, if you want 2018, 2017 or 2016. Line 16 is the address of the file that leads to all files in `.lhe` format to run on HTCondor.
+
+To run the process you can run it using `condor_submit condor_sim_reco.sub`
