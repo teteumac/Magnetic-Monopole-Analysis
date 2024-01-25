@@ -31,7 +31,7 @@ output_path="/eos/home-m/matheus/magnetic_monopole_output_AOD"
 
 # Check the year and execute the corresponding cmsDriver.py command
 if [ "$year" == "2018" ]; then
-    cmsDriver.py step1 --filein "file:$file" --fileout "file:$output_path/${base%.lhe}_LHE_${year}.root" --mc --eventcontent LHE --datatier LHE --conditions 106X_upgrade2018_realistic_v16_L1v1 --step NONE --python_filename "${base%.lhe}_LHE_${year}_cfg.py" --no_exec -n 50000 --customise_commands "process.source.firstLuminosityBlock = cms.untracked.uint32(3)"
+    cmsDriver.py step1 --filein "file:$file" --fileout "file:$output_path/${base%.lhe}_LHE_${year}.root" --mc --eventcontent LHE --datatier LHE --conditions 106X_upgrade2018_realistic_v16_L1v1 --step NONE --python_filename "${base%.lhe}_LHE_${year}_cfg.py" --no_exec -n -1 --customise_commands "process.source.firstLuminosityBlock = cms.untracked.uint32(3)"
 elif [ "$year" == "2017" ]; then
     cmsDriver.py step1 --filein "file:$file" --fileout "file:$output_path/${base%.lhe}_LHE_${year}.root" --mc --eventcontent LHE --datatier LHE --conditions 106X_mc2017_realistic_v9 --step NONE --python_filename "${base%.lhe}_LHE_${year}_cfg.py" --no_exec -n -1 --customise_commands "process.source.firstLuminosityBlock = cms.untracked.uint32(3)"
 elif [ "$year" == "2016" ]; then
