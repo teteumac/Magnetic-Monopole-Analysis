@@ -78,48 +78,6 @@ done
 
 echo "Execuções completadas."
 
-#python $SCRIPT_PATH -mass 1000 -events 10 -process "photon_fusion" -spin "half" -run_id 0
-#python $SCRIPT_PATH -mass 1000 -events 10 -process "photon_fusion" -spin "half" -run_id 1
-#python $SCRIPT_PATH -mass 2000 -events 100000 -process "photon_fusion" -spin "half" -run_id 0
-#python $SCRIPT_PATH -mass 2500 -events 100000 -process "photon_fusion" -spin "half" -run_id 0
-#python $SCRIPT_PATH -mass 3000 -events 100000 -process "photon_fusion" -spin "half" -run_id 0
-#python $SCRIPT_PATH -mass 3500 -events 100000 -process "photon_fusion" -spin "half" -run_id 0
-#python $SCRIPT_PATH -mass 4000 -events 100000 -process "photon_fusion" -spin "half" -run_id 0
-#python $SCRIPT_PATH -mass 4500 -events 100000 -process "photon_fusion" -spin "half" -run_id 0
-#
-## ATLAS mass
-#python $SCRIPT_PATH -mass 3600 -events 100000 -process "photon_fusion" -spin "half" -run_id 0
-#python $SCRIPT_PATH -mass 3700 -events 100000 -process "photon_fusion" -spin "half" -run_id 0
-#python $SCRIPT_PATH -mass 3800 -events 100000 -process "photon_fusion" -spin "half" -run_id 0
-#python $SCRIPT_PATH -mass 3900 -events 100000 -process "photon_fusion" -spin "half" -run_id 0
-#python $SCRIPT_PATH -mass 4000 -events 100000 -process "photon_fusion" -spin "half" -run_id 0
-#python $SCRIPT_PATH -mass 4100 -events 100000 -process "photon_fusion" -spin "half" -run_id 0
-#python $SCRIPT_PATH -mass 4200 -events 100000 -process "photon_fusion" -spin "half" -run_id 0
-#python $SCRIPT_PATH -mass 4300 -events 100000 -process "photon_fusion" -spin "half" -run_id 0
-#python $SCRIPT_PATH -mass 4400 -events 100000 -process "photon_fusion" -spin "half" -run_id 0
-#
-## -------------------------------------------------------------------- #
-#
-#python $SCRIPT_PATH -mass 1000 -events 100000 -process "photon_fusion" -spin "zero" -run_id 0
-#python $SCRIPT_PATH -mass 1500 -events 100000 -process "photon_fusion" -spin "zero" -run_id 0
-#python $SCRIPT_PATH -mass 2000 -events 100000 -process "photon_fusion" -spin "zero" -run_id 0
-#python $SCRIPT_PATH -mass 2500 -events 100000 -process "photon_fusion" -spin "zero" -run_id 0
-#python $SCRIPT_PATH -mass 3000 -events 100000 -process "photon_fusion" -spin "zero" -run_id 0
-#python $SCRIPT_PATH -mass 3500 -events 100000 -process "photon_fusion" -spin "zero" -run_id 0
-#python $SCRIPT_PATH -mass 4000 -events 100000 -process "photon_fusion" -spin "zero" -run_id 0
-#python $SCRIPT_PATH -mass 4500 -events 100000 -process "photon_fusion" -spin "zero" -run_id 0
-
-# ATLAS mass
-#python $SCRIPT_PATH -mass 3600 -events 100000 -process "photon_fusion" -spin "zero" -run_id 0
-#python $SCRIPT_PATH -mass 3700 -events 100000 -process "photon_fusion" -spin "zero" -run_id 0
-#python $SCRIPT_PATH -mass 3800 -events 100000 -process "photon_fusion" -spin "zero" -run_id 0
-#python $SCRIPT_PATH -mass 3900 -events 100000 -process "photon_fusion" -spin "zero" -run_id 0
-#python $SCRIPT_PATH -mass 4000 -events 100000 -process "photon_fusion" -spin "zero" -run_id 0
-#python $SCRIPT_PATH -mass 4100 -events 100000 -process "photon_fusion" -spin "zero" -run_id 0
-#python $SCRIPT_PATH -mass 4200 -events 100000 -process "photon_fusion" -spin "zero" -run_id 0
-#python $SCRIPT_PATH -mass 4300 -events 100000 -process "photon_fusion" -spin "zero" -run_id 0
-#python $SCRIPT_PATH -mass 4400 -events 100000 -process "photon_fusion" -spin "zero" -run_id 0
-
 
 #touch ListFile_condor.txt
 #find /eos/home-m/matheus/magnetic_monopole_output/*.lhe > /afs/cern.ch/user/m/matheus/CMSSW_10_6_23/src/ListFile_condor.txt # Para todos os arquivos
