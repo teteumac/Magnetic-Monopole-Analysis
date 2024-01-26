@@ -126,3 +126,5 @@ Only the `CMSSW_10_6_23` release makes the entire process automated by HTCondor.
 Within `CMSSW_10_6_23/src`, you can find the code `simulation_Run2.sh` and modify the relevant paths, as well as the year of execution which is on line 20, if you want 2018, 2017 or 2016. Line 16 is the address of the file that leads to all files in `.lhe` format to run on HTCondor.
 
 To run the process you can run it using `condor_submit condor_sim_reco.sub`
+
+`--customise_commands process.AODSIMoutput.outputCommands.append('keep *_siStripClusters_*_*') \n process.AODSIMoutput.outputCommands.append('keep *_siPixelClusters_*_*') \n process.AODSIMoutput.outputCommands.append('drop *_generalTracks_*_*')`
