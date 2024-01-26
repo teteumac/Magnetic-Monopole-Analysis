@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # 1. Download the Release
-cmsrel CMSSW_10_6_21
+cmsrel CMSSW_10_6_22
 
 # 2. Access the `src` Directory
-cd CMSSW_10_6_21/src
+cd CMSSW_10_6_22/src
 
 # 3. Download MadGraph5
 wget https://launchpad.net/mg5amcnlo/lts/2.9.x/+download/MG5_aMC_v2.9.16.tar.gz
@@ -14,7 +14,7 @@ tar -xzvf MG5_aMC_v2.9.16.tar.gz
 cd MG5_aMC_v2_9_16
 
 # 5. Enter in virtual environment with python3
-source /afs/cern.ch/user/m/matheus/hepenv/bin/activate
+source /afs/cern.ch/user/m/matheus/public/hepenv_setup.sh
 
 # Automatically install the packages and exit the MadGraph5 environment
 echo -e "install MadAnalysis5\ninstall lhapdf6\nexit" | ./bin/mg5_aMC
@@ -30,7 +30,7 @@ else
 fi
 
 # 7. Set LHAPDF_DATA_PATH
-export LHAPDF_DATA_PATH=/afs/cern.ch/user/m/matheus/CMSSW_10_6_21/src/MG5_aMC_v2_9_16/HEPTools/lhapdf6_py3/share/LHAPDF
+export LHAPDF_DATA_PATH=/afs/cern.ch/user/m/matheus/CMSSW_10_6_22/src/MG5_aMC_v2_9_16/HEPTools/lhapdf6_py3/share/LHAPDF
 
 # 8. Add the export command to ~/.bashrc
-echo "export LHAPDF_DATA_PATH=/afs/cern.ch/user/m/matheus/CMSSW_10_6_21/src/MG5_aMC_v2_9_16/HEPTools/lhapdf6_py3/share/LHAPDF" >> ~/.bashrc
+echo "export LHAPDF_DATA_PATH=/afs/cern.ch/user/m/matheus/CMSSW_10_6_22/src/MG5_aMC_v2_9_16/HEPTools/lhapdf6_py3/share/LHAPDF" >> ~/.bashrc
