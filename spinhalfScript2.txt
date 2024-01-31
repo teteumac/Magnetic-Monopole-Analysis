@@ -1,0 +1,15 @@
+launch Pre5
+analysis=madanalysis5
+set run_card ebeam1 6500.  ## energy per beam
+set run_card ebeam2 6500
+set run_card lpp1 1          
+set run_card lpp2 1
+set run_card pdlabel lhapdf ### one can choose different pdf set here
+set run_card lhaid 324900    ### one can choose different pdf set here
+set run_card nevents 100   ### change the number of events here
+set run_card dynamical_scale_choice -1
+set run_card fixed_couplings False
+set param_card mass 25 125
+set param_card mass 4110000 1000  ### change the mass here
+set param_card decay 4110000 0.000000e+0
+set param_card gch 1 1.0
